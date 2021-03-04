@@ -74,7 +74,7 @@ func NewIntegrationPlusNormal() *configuration {
 // NewPlusNormal transacciones en entorno de producción
 func NewPlusNormal(commeceCode, apiKeySecret string) *configuration {
 	return &configuration{
-		Request: request.New(productionHost, request.Headers{
+		Request: request.New(productionHost+"/rswebpaytransaction/api/webpay/v1.0/transactions/", request.Headers{
 			"Tbk-Api-Key-Id":     commeceCode,
 			"Tbk-Api-Key-Secret": apiKeySecret,
 		}),
