@@ -60,6 +60,22 @@ func (r *Request) POST(url string, headers Headers, body, output interface{}) er
 	return req.execute(output)
 }
 
+// DELETE .
+func (r *Request) DELETE(url string, headers Headers, body, output interface{}) error {
+	if headers != nil {
+		for k, v := range headers {
+			r.headers[k] = v
+		}
+	}
+	req := &request{
+		url:     r.base + url,
+		method:  "DELETE",
+		headers: r.headers,
+		body:    body,
+	}
+	return req.execute(output)
+}
+
 // PUT .
 func (r *Request) PUT(url string, headers Headers, body, output interface{}) error {
 	if headers != nil {
